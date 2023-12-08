@@ -19,6 +19,10 @@ html {
   img {
     filter: grayscale(100%);
     opacity: 0.75;
+    -webkit-transition: opacity 2s ease-out;
+    -moz-transition: opacity 2s ease-out;
+    -o-transition: opacity 2s ease-out;
+    transition: opacity 2s ease-out;
   }
 
   .card-img-overlay {
@@ -29,6 +33,11 @@ html {
   &:hover {
     .card-img-overlay {
       visibility: visible;
+    }
+
+    img {
+      filter: grayscale(0%);
+      opacity: 1;
     }
   }
 
