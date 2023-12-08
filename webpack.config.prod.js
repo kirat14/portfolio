@@ -1,4 +1,4 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -18,7 +18,9 @@ module.exports = function (env, argv) {
     }
     ,
     plugins: [
-      new CleanWebpackPlugin(['dist']),
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: ['dist'],
+      }),
       new HtmlWebpackPlugin({
         title: 'Webpack starter project',
         template: path.resolve('./src/index.html')
@@ -71,7 +73,7 @@ module.exports = function (env, argv) {
                   enabled: true,
                 },
                 pngquant: {
-                  quality: '65-90',
+                  quality: [0.65, 0.90],
                   speed: 4
                 },
                 gifsicle: {
